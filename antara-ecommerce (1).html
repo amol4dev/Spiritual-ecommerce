@@ -1,545 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Antara — Rituals for the Everyday Sacred</title>
+<title>Antara â€” Rituals for the Everyday Sacred</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#FBF6EC;
-  --surface:#FFFFFF;
-  --surface-alt:#F3EADA;
-  --maroon:#6E2A3B;
-  --maroon-dark:#521F2C;
-  --marigold:#D98E2B;
-  --marigold-soft:#F0C88B;
-  --brass:#A9863E;
-  --ink:#2A211C;
-  --ink-soft:#6B5F52;
-  --border:#E4D8C3;
-  --success:#4C6B4F;
-  --error:#A3392F;
-  --radius:14px;
-  --radius-sm:8px;
-  --shadow-soft:0 8px 24px rgba(42,33,28,0.08);
-  --shadow-lift:0 16px 40px rgba(42,33,28,0.14);
-}
-*{box-sizing:border-box; margin:0; padding:0;}
-body{
-  background:var(--bg);
-  color:var(--ink);
-  font-family:'Work Sans', sans-serif;
-  font-weight:400;
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-}
-h1,h2,h3,h4{
-  font-family:'Fraunces', serif;
-  font-weight:450;
-  letter-spacing:-0.01em;
-  color:var(--ink);
-}
-img{max-width:100%; display:block;}
-a{color:inherit; text-decoration:none;}
-button{font-family:inherit; cursor:pointer; border:none; background:none;}
-.eyebrow{
-  font-size:11.5px;
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:var(--marigold);
-  font-weight:600;
-}
-.thread-divider{
-  width:56px; height:2px;
-  background:repeating-linear-gradient(90deg, var(--maroon) 0 6px, var(--marigold) 6px 12px);
-  border-radius:2px;
-  margin:14px 0 0;
-}
-.container{max-width:1240px; margin:0 auto; padding:0 32px;}
-:focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
-@media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
-
-/* ---------- Announcement bar ---------- */
-.announce{
-  background:var(--maroon);
-  color:var(--marigold-soft);
-  text-align:center;
-  font-size:12.5px;
-  letter-spacing:0.06em;
-  padding:9px 16px;
-}
-
-/* ---------- Nav ---------- */
-header.nav{
-  position:sticky; top:0; z-index:50;
-  background:rgba(251,246,236,0.92);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-}
-.nav-row{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:18px 32px; max-width:1240px; margin:0 auto;
-}
-.logo{
-  font-family:'Fraunces', serif; font-size:24px; font-weight:600;
-  letter-spacing:0.01em; display:flex; align-items:center; gap:9px;
-}
-.logo svg{flex-shrink:0;}
-.nav-links{display:flex; gap:34px; font-size:14.5px; font-weight:500;}
-.nav-links a{position:relative; padding:4px 0; color:var(--ink);}
-.nav-links a::after{
-  content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px;
-  background:var(--maroon); transition:width 0.25s ease;
-}
-.nav-links a:hover::after, .nav-links a.active::after{width:100%;}
-.nav-icons{display:flex; align-items:center; gap:20px;}
-.icon-btn{position:relative; padding:6px; border-radius:8px; transition:background 0.2s;}
-.icon-btn:hover{background:var(--surface-alt);}
-.cart-count{
-  position:absolute; top:-2px; right:-2px; background:var(--maroon); color:#fff;
-  font-size:10px; font-weight:600; width:16px; height:16px; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-}
-.mobile-toggle{display:none;}
-
-/* ---------- Mobile drawer ---------- */
-.mobile-scrim{
-  display:none; position:fixed; inset:0; background:rgba(42,33,28,0.45);
-  z-index:98; opacity:0; pointer-events:none; transition:opacity 0.25s ease;
-}
-.mobile-scrim.show{opacity:1; pointer-events:auto;}
-.mobile-drawer{
-  position:fixed; top:0; right:0; height:100%; width:82%; max-width:320px;
-  background:var(--surface); z-index:99; padding:22px 24px;
-  transform:translateX(100%); transition:transform 0.3s ease;
-  box-shadow:-16px 0 40px rgba(42,33,28,0.18);
-  display:flex; flex-direction:column;
-}
-.mobile-drawer.show{transform:translateX(0);}
-.mobile-drawer-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:30px;}
-.mobile-drawer-links{display:flex; flex-direction:column; gap:4px; margin-bottom:28px;}
-.mobile-drawer-links a{
-  font-family:'Fraunces', serif; font-size:20px; font-weight:450; padding:12px 0;
-  border-bottom:1px solid var(--border); color:var(--ink);
-}
-.mobile-drawer-icons{display:flex; flex-direction:column; gap:4px; margin-top:auto;}
-.mobile-drawer-icons button{
-  display:flex; align-items:center; gap:12px; padding:11px 4px; font-size:14px; color:var(--ink-soft); width:100%; justify-content:flex-start;
-}
-.mobile-drawer-icons button:hover{color:var(--maroon);}
-
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding:14px 28px; border-radius:100px; font-size:14px; font-weight:600;
-  letter-spacing:0.02em; transition:all 0.22s ease; white-space:nowrap;
-}
-.btn-primary{background:var(--maroon); color:#fff;}
-.btn-primary:hover{background:var(--maroon-dark); transform:translateY(-1px); box-shadow:var(--shadow-soft);}
-.btn-secondary{background:var(--marigold); color:var(--ink);}
-.btn-secondary:hover{background:#c67f22; transform:translateY(-1px);}
-.btn-outline{background:transparent; border:1.5px solid var(--ink); color:var(--ink);}
-.btn-outline:hover{background:var(--ink); color:#fff;}
-.btn-ghost{background:transparent; color:var(--maroon); padding:14px 18px;}
-.btn-ghost:hover{background:var(--surface-alt);}
-.btn-sm{padding:10px 18px; font-size:13px;}
-.btn-block{width:100%;}
-.btn:disabled{opacity:0.45; cursor:not-allowed; transform:none !important;}
-
-/* ---------- Hero ---------- */
-.hero{
-  display:grid; grid-template-columns:1.05fr 1fr; align-items:center;
-  gap:56px; padding:64px 32px 88px; max-width:1240px; margin:0 auto;
-}
-.hero-copy h1{font-size:52px; line-height:1.08; margin:18px 0 22px; font-weight:450;}
-.hero-copy h1 em{font-style:italic; color:var(--maroon); font-weight:450;}
-.hero-copy p{font-size:16.5px; color:var(--ink-soft); max-width:440px; margin-bottom:32px;}
-.hero-cta{display:flex; gap:14px; align-items:center;}
-.hero-visual{
-  position:relative; aspect-ratio:1/1.05; border-radius:28px;
-  background:radial-gradient(circle at 30% 20%, #F3D9A3, var(--marigold-soft) 45%, var(--maroon) 130%);
-  display:flex; align-items:center; justify-content:center; overflow:hidden;
-}
-.hero-visual .glow{
-  position:absolute; width:70%; height:70%; border-radius:50%;
-  background:radial-gradient(circle, rgba(255,241,214,0.9), rgba(255,241,214,0) 70%);
-  filter:blur(2px);
-}
-.hero-visual svg{position:relative; width:58%; height:58%;}
-.hero-trust{display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;}
-.hero-trust div{font-size:12.5px; color:var(--ink-soft);}
-.hero-trust strong{display:block; font-family:'Fraunces', serif; font-size:22px; color:var(--ink); font-weight:500;}
-
-/* ---------- Section heading ---------- */
-.section{padding:76px 32px;}
-.section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:16px;}
-.section-head h2{font-size:34px; font-weight:450;}
-.section-head p{color:var(--ink-soft); font-size:14.5px; margin-top:6px; max-width:440px;}
-.alt-bg{background:var(--surface-alt);}
-
-/* ---------- Category grid ---------- */
-.cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-.cat-card{
-  background:var(--surface); border-radius:var(--radius); padding:28px 22px;
-  border:1px solid var(--border); transition:all 0.25s ease; cursor:pointer;
-}
-.cat-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lift); border-color:var(--marigold);}
-.cat-icon{
-  width:52px; height:52px; border-radius:50%; background:var(--surface-alt);
-  display:flex; align-items:center; justify-content:center; margin-bottom:18px;
-}
-.cat-icon svg{width:26px; height:26px; stroke:var(--maroon);}
-.cat-card h4{font-size:17px; font-weight:500; margin-bottom:4px;}
-.cat-card span{font-size:12.5px; color:var(--ink-soft);}
-
-/* ---------- Product grid & card ---------- */
-.prod-grid{
-  display:grid;
-  grid-template-columns:repeat(3, minmax(0, 1fr));
-  gap:24px;
-  align-items:stretch;
-}
-.prod-card{
-  background:var(--surface); border-radius:var(--radius); overflow:hidden;
-  border:1px solid var(--border); transition:all 0.25s ease; cursor:pointer;
-  display:flex; flex-direction:column;
-  height:100%;
-  min-height:420px;
-}
-.prod-card:hover{box-shadow:var(--shadow-lift); transform:translateY(-3px); border-color:var(--marigold-soft);}
-.prod-img{
-  aspect-ratio:4/3; position:relative; display:flex; align-items:center; justify-content:center;
-  overflow:hidden; background:var(--surface-alt);
-}
-.prod-img svg{width:44%; height:44%; transition:transform 0.35s ease;}
-.prod-card:hover .prod-img svg{transform:scale(1.08) rotate(-2deg);}
-.prod-badge{
-  position:absolute; top:12px; left:12px; background:var(--maroon); color:#fff;
-  font-size:10.5px; font-weight:600; letter-spacing:0.04em; padding:5px 10px; border-radius:100px;
-}
-.wish-btn{
-  position:absolute; top:12px; right:12px; width:32px; height:32px; border-radius:50%;
-  background:rgba(255,255,255,0.85); display:flex; align-items:center; justify-content:center;
-  transition:all 0.2s;
-}
-.wish-btn:hover{background:#fff; transform:scale(1.08);}
-.wish-btn svg{width:16px; height:16px; stroke:var(--maroon);}
-.wish-btn.active svg{fill:var(--maroon);}
-.prod-info{padding:16px 18px 20px; display:flex; flex-direction:column; flex:1; justify-content:space-between;}
-.prod-cat{font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--brass); font-weight:600;}
-.prod-info h4{font-size:15.5px; font-weight:500; margin:6px 0 8px;}
-.prod-rating{display:flex; align-items:center; gap:5px; font-size:12px; color:var(--ink-soft); margin-bottom:10px;}
-.prod-rating svg{width:12px; height:12px; fill:var(--marigold); stroke:none;}
-.prod-price-row{display:flex; align-items:center; justify-content:space-between;}
-.prod-price{font-size:16px; font-weight:600;}
-.prod-price .strike{font-size:12.5px; color:var(--ink-soft); text-decoration:line-through; font-weight:400; margin-left:6px;}
-.add-icon-btn{
-  width:36px; height:36px; border-radius:50%; background:var(--surface-alt);
-  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
-}
-.add-icon-btn:hover{background:var(--maroon);}
-.add-icon-btn:hover svg{stroke:#fff;}
-.add-icon-btn svg{width:16px; height:16px; stroke:var(--ink);}
-
-@media (max-width: 980px){
-  .prod-grid{grid-template-columns:repeat(2, minmax(0, 1fr));}
-}
-
-@media (max-width: 640px){
-  .prod-grid{grid-template-columns:1fr;}
-  .prod-card{min-height:auto;}
-}
-
-/* ---------- Why choose / trust ---------- */
-.trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
-.trust-item{text-align:left;}
-.trust-item svg{width:34px; height:34px; stroke:var(--maroon); margin-bottom:16px;}
-.trust-item h4{font-size:16.5px; font-weight:500; margin-bottom:8px;}
-.trust-item p{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
-
-/* ---------- Reviews ---------- */
-.review-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-.review-card{
-  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-  padding:26px; display:flex; flex-direction:column; gap:12px;
-}
-.review-stars{display:flex; gap:3px;}
-.review-stars svg{width:13px; height:13px; fill:var(--marigold);}
-.review-card p{font-size:14px; color:var(--ink); line-height:1.6;}
-.review-who{display:flex; align-items:center; gap:10px; margin-top:6px;}
-.review-avatar{
-  width:36px; height:36px; border-radius:50%; background:var(--surface-alt);
-  display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:600; color:var(--maroon);
-}
-.review-who span{font-size:13px; font-weight:500;}
-.review-who small{display:block; font-size:11.5px; color:var(--ink-soft); font-weight:400;}
-.verified-badge{
-  display:inline-flex; align-items:center; gap:4px; font-size:10.5px; color:var(--success);
-  font-weight:600; background:#EAF0EA; padding:3px 8px; border-radius:100px; width:fit-content;
-}
-
-/* ---------- Newsletter ---------- */
-.newsletter{
-  background:var(--maroon); border-radius:24px; padding:56px 48px; margin:0 32px 76px;
-  display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
-  max-width:1176px; margin-left:auto; margin-right:auto;
-}
-.newsletter h3{color:#fff; font-size:26px; font-weight:450; max-width:380px;}
-.newsletter p{color:var(--marigold-soft); font-size:13.5px; margin-top:8px;}
-.newsletter-form{display:flex; gap:10px; flex:1; max-width:400px; min-width:280px;}
-.newsletter-form input{
-  flex:1; padding:14px 18px; border-radius:100px; border:none; font-size:14px; font-family:inherit;
-}
-.newsletter-form input:focus{outline:2px solid var(--marigold);}
-
-/* ---------- Footer ---------- */
-footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
-.footer-grid{
-  max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr; gap:40px;
-  padding-bottom:44px; border-bottom:1px solid rgba(255,255,255,0.1);
-}
-.footer-grid h5{color:#fff; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:18px; font-family:'Work Sans'; font-weight:600;}
-.footer-grid ul{list-style:none;}
-.footer-grid li{margin-bottom:11px; font-size:13.5px;}
-.footer-grid a:hover{color:#fff;}
-.footer-logo{font-family:'Fraunces', serif; color:#fff; font-size:22px; margin-bottom:14px;}
-.footer-grid p{font-size:13px; line-height:1.6; color:#B5A996; max-width:260px;}
-.footer-bottom{
-  max-width:1240px; margin:0 auto; padding-top:22px; display:flex; justify-content:space-between;
-  font-size:12.5px; color:#8A7D6B; flex-wrap:wrap; gap:10px;
-}
-
-/* ---------- Breadcrumb / filters (Shop page) ---------- */
-.breadcrumb{font-size:13px; color:var(--ink-soft); padding:22px 32px 0; max-width:1240px; margin:0 auto;}
-.breadcrumb a:hover{color:var(--maroon);}
-.shop-head{padding:18px 32px 32px; max-width:1240px; margin:0 auto;}
-.shop-head h1{font-size:32px; margin-bottom:6px;}
-.shop-layout{display:grid; grid-template-columns:240px 1fr; gap:36px; max-width:1240px; margin:0 auto; padding:0 32px 90px;}
-.filter-block{margin-bottom:30px;}
-.filter-block h5{font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); margin-bottom:14px; font-weight:600;}
-.filter-row{display:flex; align-items:center; gap:9px; font-size:13.5px; color:var(--ink-soft); margin-bottom:11px; cursor:pointer;}
-.filter-row input{accent-color:var(--maroon); width:15px; height:15px;}
-.filter-row:hover{color:var(--ink);}
-.price-range{display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--ink-soft);}
-.price-range input[type=range]{flex:1; accent-color:var(--maroon);}
-.shop-toolbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:26px; flex-wrap:wrap; gap:14px;}
-.shop-toolbar select, .shop-toolbar .search-input{
-  padding:10px 16px; border-radius:100px; border:1px solid var(--border); background:var(--surface);
-  font-size:13.5px; font-family:inherit;
-}
-.pagination{display:flex; justify-content:center; gap:8px; margin-top:48px;}
-.page-btn{
-  width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:13.5px; border:1px solid var(--border); transition:all 0.2s;
-}
-.page-btn.active{background:var(--maroon); color:#fff; border-color:var(--maroon);}
-.page-btn:hover:not(.active){border-color:var(--maroon);}
-
-/* ---------- Product detail ---------- */
-.pd-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; max-width:1240px; margin:0 auto; padding:28px 32px 90px;}
-.pd-gallery-main{
-  aspect-ratio:1/1; border-radius:20px; background:var(--surface-alt); display:flex; align-items:center; justify-content:center;
-  margin-bottom:16px; overflow:hidden; position:relative;
-}
-.pd-gallery-main svg{width:48%; height:48%;}
-.pd-zoom-tag{
-  position:absolute; bottom:14px; right:14px; background:rgba(255,255,255,0.9); font-size:11.5px;
-  padding:6px 12px; border-radius:100px; display:flex; align-items:center; gap:5px; color:var(--ink-soft);
-}
-.pd-thumbs{display:flex; gap:12px;}
-.pd-thumb{
-  width:76px; height:76px; border-radius:10px; background:var(--surface-alt); border:2px solid transparent;
-  display:flex; align-items:center; justify-content:center; cursor:pointer;
-}
-.pd-thumb.active{border-color:var(--maroon);}
-.pd-thumb svg{width:60%; height:60%;}
-.pd-info .prod-cat{font-size:11.5px;}
-.pd-info h1{font-size:30px; margin:8px 0 12px;}
-.pd-rating-row{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-soft); margin-bottom:18px;}
-.pd-rating-row .stars{display:flex; gap:2px;}
-.pd-rating-row svg{width:14px; height:14px; fill:var(--marigold);}
-.pd-price-block{display:flex; align-items:baseline; gap:12px; margin-bottom:6px;}
-.pd-price-block .price{font-size:28px; font-weight:600;}
-.pd-price-block .strike{font-size:15px; color:var(--ink-soft); text-decoration:line-through;}
-.pd-price-block .off{color:var(--success); font-size:13px; font-weight:600;}
-.pd-tax{font-size:12px; color:var(--ink-soft); margin-bottom:24px;}
-.pd-desc{font-size:14.5px; color:var(--ink-soft); line-height:1.7; margin-bottom:26px; max-width:460px;}
-.variant-block{margin-bottom:24px;}
-.variant-block h5{font-size:12.5px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px; font-weight:600;}
-.variant-options{display:flex; gap:10px; flex-wrap:wrap;}
-.variant-pill{
-  padding:9px 18px; border-radius:100px; border:1.5px solid var(--border); font-size:13.5px; transition:all 0.2s;
-}
-.variant-pill.selected{border-color:var(--maroon); background:var(--maroon); color:#fff;}
-.variant-pill:hover:not(.selected){border-color:var(--maroon);}
-.qty-row{display:flex; align-items:center; gap:18px; margin-bottom:26px;}
-.qty-selector{
-  display:flex; align-items:center; border:1.5px solid var(--border); border-radius:100px; overflow:hidden;
-}
-.qty-selector button{width:38px; height:38px; font-size:16px; transition:background 0.2s;}
-.qty-selector button:hover{background:var(--surface-alt);}
-.qty-selector span{width:34px; text-align:center; font-size:14.5px; font-weight:500;}
-.pd-cta-row{display:flex; gap:12px; margin-bottom:22px;}
-.pd-cta-row .btn{flex:1;}
-.pd-trust-strip{display:flex; gap:22px; padding-top:20px; border-top:1px solid var(--border); flex-wrap:wrap;}
-.pd-trust-strip div{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-soft);}
-.pd-trust-strip svg{width:18px; height:18px; stroke:var(--maroon); flex-shrink:0;}
-
-.pd-tabs{display:flex; gap:8px; border-bottom:1px solid var(--border); margin:64px 32px 0; max-width:1176px; padding:0 32px 0;}
-.pd-tab{padding:14px 22px; font-size:14px; font-weight:500; color:var(--ink-soft); border-bottom:2px solid transparent; margin-bottom:-1px;}
-.pd-tab.active{color:var(--maroon); border-color:var(--maroon);}
-.pd-tab-panel{max-width:1240px; margin:0 auto; padding:36px 32px 90px; font-size:14.5px; color:var(--ink-soft); line-height:1.75;}
-.spec-table{width:100%; max-width:560px; border-collapse:collapse;}
-.spec-table tr{border-bottom:1px solid var(--border);}
-.spec-table td{padding:12px 0; font-size:13.5px;}
-.spec-table td:first-child{color:var(--ink-soft); width:180px;}
-.spec-table td:last-child{color:var(--ink); font-weight:500;}
-.faq-item{border-bottom:1px solid var(--border); padding:18px 0;}
-.faq-item summary{font-size:14.5px; font-weight:500; color:var(--ink); cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;}
-.faq-item summary::-webkit-details-marker{display:none;}
-.faq-item p{margin-top:10px; color:var(--ink-soft); font-size:13.5px;}
-
-.rating-summary{display:flex; gap:56px; padding:36px 0 44px; flex-wrap:wrap;}
-.rating-big{text-align:center;}
-.rating-big .num{font-family:'Fraunces',serif; font-size:52px; font-weight:500; color:var(--ink);}
-.rating-big .stars{display:flex; gap:3px; justify-content:center; margin:6px 0;}
-.rating-big .stars svg{width:15px; height:15px; fill:var(--marigold);}
-.rating-big span{font-size:12.5px; color:var(--ink-soft);}
-.rating-bars{flex:1; min-width:260px; display:flex; flex-direction:column; gap:8px; justify-content:center;}
-.rating-bar-row{display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--ink-soft);}
-.rating-bar-track{flex:1; height:6px; background:var(--surface-alt); border-radius:100px; overflow:hidden;}
-.rating-bar-fill{height:100%; background:var(--marigold); border-radius:100px;}
-
-/* ---------- Cart page ---------- */
-.cart-layout{display:grid; grid-template-columns:1.6fr 1fr; gap:40px; max-width:1100px; margin:0 auto; padding:36px 32px 100px;}
-.cart-item{display:grid; grid-template-columns:88px 1fr auto; gap:16px; padding:20px 0; border-bottom:1px solid var(--border); align-items:center;}
-.cart-item-img{width:88px; height:88px; border-radius:12px; background:var(--surface-alt); display:flex; align-items:center; justify-content:center;}
-.cart-item-img svg{width:52%; height:52%;}
-.cart-item-info h4{font-size:15px; font-weight:500; margin-bottom:4px;}
-.cart-item-info span{font-size:12.5px; color:var(--ink-soft);}
-.cart-item-right{text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:10px;}
-.remove-link{font-size:12px; color:var(--error); font-weight:500;}
-.summary-card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px; height:fit-content; position:sticky; top:100px;}
-.summary-card h4{font-size:16.5px; margin-bottom:18px;}
-.summary-row{display:flex; justify-content:space-between; font-size:13.5px; color:var(--ink-soft); margin-bottom:12px;}
-.summary-row.total{color:var(--ink); font-weight:600; font-size:16px; padding-top:14px; border-top:1px solid var(--border); margin-top:6px;}
-.promo-row{display:flex; gap:8px; margin:18px 0;}
-.promo-row input{flex:1; padding:11px 14px; border-radius:8px; border:1px solid var(--border); font-size:13px; font-family:inherit;}
-
-/* ---------- Empty state ---------- */
-.empty-state{text-align:center; padding:100px 32px; max-width:420px; margin:0 auto;}
-.empty-state svg{width:64px; height:64px; stroke:var(--brass); margin-bottom:22px;}
-.empty-state h3{font-size:20px; margin-bottom:8px;}
-.empty-state p{color:var(--ink-soft); font-size:14px; margin-bottom:26px;}
-
-/* ---------- Toast ---------- */
-.toast{
-  position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
-  background:var(--ink); color:#fff; padding:14px 24px; border-radius:100px; font-size:13.5px;
-  display:flex; align-items:center; gap:10px; opacity:0; pointer-events:none; transition:all 0.3s ease; z-index:200;
-}
-.toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
-.toast svg{width:16px; height:16px; stroke:var(--marigold-soft);}
-
-/* ---------- Page visibility ---------- */
-.page{display:none;}
-.page.active{display:block;}
-
-/* ---------- Responsive: tablet (≤1024px) ---------- */
-@media (max-width:1024px){
-  .cat-grid, .prod-grid{grid-template-columns:repeat(3,1fr);}
-  .trust-grid{grid-template-columns:repeat(2,1fr); gap:32px 24px;}
-  .review-grid{grid-template-columns:repeat(2,1fr);}
-  .hero{grid-template-columns:1fr; padding-top:36px; gap:40px;}
-  .hero-copy{text-align:center; display:flex; flex-direction:column; align-items:center;}
-  .hero-cta{flex-wrap:wrap; justify-content:center;}
-  .hero-trust{justify-content:center;}
-  .hero-visual{order:-1; max-width:380px; margin:0 auto; width:100%;}
-  .footer-grid{grid-template-columns:repeat(2,1fr); row-gap:36px;}
-  .shop-layout{grid-template-columns:200px 1fr; gap:24px;}
-  .pd-layout{grid-template-columns:1fr; gap:36px;}
-  .pd-thumbs{justify-content:center;}
-  .cart-layout{grid-template-columns:1fr;}
-  .summary-card{position:static;}
-}
-
-/* ---------- Responsive: mobile (≤768px) ---------- */
-@media (max-width:768px){
-  .container, .section, .hero, .footer-grid, .shop-head, .shop-layout,
-  .pd-layout, .cart-layout, .nav-row, .breadcrumb, .pd-tabs{padding-left:20px; padding-right:20px;}
-  .section{padding:52px 20px;}
-
-  .nav-links, .hide-on-mobile{display:none;}
-  .mobile-toggle{display:flex;}
-  .mobile-scrim{display:block;}
-  .nav-row{padding:14px 20px;}
-  .logo{font-size:20px;}
-  .announce{font-size:11.5px; padding:8px 14px;}
-
-  .cat-grid, .prod-grid{grid-template-columns:repeat(2,1fr); gap:12px;}
-  .prod-info{padding:12px 14px 16px;}
-  .prod-info h4{font-size:14px;}
-  .prod-price{font-size:14.5px;}
-
-  .hero{padding:32px 20px 56px;}
-  .hero-copy h1{font-size:34px;}
-  .hero-copy p{font-size:15px; margin-left:auto; margin-right:auto;}
-  .hero-trust{gap:20px 26px;}
-
-  .section-head{flex-direction:column; align-items:flex-start;}
-  .section-head h2{font-size:24px;}
-
-  .trust-grid{grid-template-columns:1fr; gap:28px;}
-  .review-grid{grid-template-columns:1fr;}
-
-  .newsletter{flex-direction:column; align-items:flex-start; margin:0 16px 56px; padding:32px 24px;}
-  .newsletter-form{max-width:100%; width:100%;}
-
-  .footer-grid{grid-template-columns:1fr; gap:32px; padding-bottom:32px;}
-  footer{padding:48px 20px 24px;}
-  .footer-bottom{flex-direction:column; text-align:center;}
-
-  /* Shop page: sidebar becomes a collapsible block above the grid */
-  .shop-layout{grid-template-columns:1fr; gap:0;}
-  .filter-sidebar{
-    display:block; margin-bottom:26px; border:1px solid var(--border); border-radius:var(--radius);
-    padding:18px 18px 6px;
-  }
-  .shop-toolbar{flex-direction:column; align-items:stretch;}
-  .shop-toolbar .search-input{min-width:0; width:100%;}
-  .shop-toolbar select{width:100%;}
-  .shop-head h1{font-size:26px;}
-
-  /* Product detail */
-  .pd-gallery-main{aspect-ratio:1/0.9;}
-  .pd-thumb{width:60px; height:60px;}
-  .pd-info h1{font-size:24px;}
-  .pd-price-block .price{font-size:24px;}
-  .pd-cta-row{flex-direction:column;}
-  .pd-trust-strip{flex-direction:column; gap:12px;}
-  .pd-tabs{overflow-x:auto; -webkit-overflow-scrolling:touch; flex-wrap:nowrap;}
-  .pd-tab{white-space:nowrap; padding:14px 16px;}
-  .pd-tab-panel{padding:28px 20px 60px;}
-  .spec-table td:first-child{width:130px;}
-  .rating-summary{gap:28px; padding:24px 0 32px;}
-  .rating-big .num{font-size:40px;}
-
-  /* Cart */
-  .cart-item{grid-template-columns:64px 1fr; row-gap:10px;}
-  .cart-item-right{grid-column:1/-1; flex-direction:row; align-items:center; justify-content:space-between; text-align:left;}
-  .cart-item-img{width:64px; height:64px;}
-}
-
-@media (max-width:420px){
-  .cat-grid, .prod-grid{grid-template-columns:1fr 1fr; gap:10px;}
-  .hero-copy h1{font-size:29px;}
-  .hero-trust{gap:16px 22px;}
-  .hero-trust strong{font-size:19px;}
-  .btn{padding:13px 22px; font-size:13.5px;}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -567,7 +34,7 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
 </svg>
 
 <!-- ================= ANNOUNCEMENT BAR ================= -->
-<div class="announce">Free copper diya with every order above ₹1,499 — this Amavasya only</div>
+<div class="announce">Free copper diya with every order above â‚¹1,499 â€” this Amavasya only</div>
 
 <!-- ================= NAV ================= -->
 <header class="nav">
@@ -625,12 +92,12 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
 
   <section class="hero">
     <div class="hero-copy">
-      <span class="eyebrow">Handpicked · Temple-sourced · Small-batch</span>
+      <span class="eyebrow">Handpicked Â· Temple-sourced Â· Small-batch</span>
       <h1>Small rituals,<br><em>held with care.</em></h1>
-      <p>Sandalwood incense, copper puja essentials and rudraksha malas — sourced directly from artisan clusters in Mysore, Moradabad and Haridwar. Nothing mass-produced.</p>
+      <p>Sandalwood incense, copper puja essentials and rudraksha malas â€” sourced directly from artisan clusters in Mysore, Moradabad and Haridwar. Nothing mass-produced.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" onclick="showPage('shop')">Shop the collection</button>
-        <button class="btn btn-ghost" onclick="showPage('shop')">Our sourcing story →</button>
+        <button class="btn btn-ghost" onclick="showPage('shop')">Our sourcing story â†’</button>
       </div>
       <div class="hero-trust">
         <div><strong>12k+</strong>rituals fulfilled</div>
@@ -684,7 +151,7 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
   <!-- Flash sale -->
   <section class="section">
     <div class="section-head">
-      <div><span class="eyebrow">Ends in 14:26:08</span><h2>Amavasya flash sale — up to 30% off</h2></div>
+      <div><span class="eyebrow">Ends in 14:26:08</span><h2>Amavasya flash sale â€” up to 30% off</h2></div>
     </div>
     <div class="prod-grid" id="flashSaleGrid"></div>
   </section>
@@ -705,22 +172,22 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
     <div class="section-head"><div><span class="eyebrow">3,214 reviews</span><h2>What our community says</h2></div></div>
     <div class="review-grid">
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars">â˜…â˜…â˜…â˜…â˜…</div>
         <p>"The sandalwood dhoop cones burn slow and the fragrance actually lingers. My mother says it reminds her of her grandmother's puja room."</p>
         <div class="review-who"><div class="review-avatar">R</div><div><span>Radhika M.</span><small>Pune</small></div></div>
-        <span class="verified-badge">✓ Verified buyer</span>
+        <span class="verified-badge">âœ“ Verified buyer</span>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <p>"Ordered the copper kalash for Griha Pravesh — the finish and weight feel genuinely handcrafted, not the thin stamped kind."</p>
+        <div class="review-stars">â˜…â˜…â˜…â˜…â˜…</div>
+        <p>"Ordered the copper kalash for Griha Pravesh â€” the finish and weight feel genuinely handcrafted, not the thin stamped kind."</p>
         <div class="review-who"><div class="review-avatar">A</div><div><span>Arjun K.</span><small>Bengaluru</small></div></div>
-        <span class="verified-badge">✓ Verified buyer</span>
+        <span class="verified-badge">âœ“ Verified buyer</span>
       </div>
       <div class="review-card">
-        <div class="review-stars">★★★★★</div>
+        <div class="review-stars">â˜…â˜…â˜…â˜…â˜…</div>
         <p>"My rudraksha mala came with a little card explaining which mala from Haridwar it was sourced from. Small touch, meant a lot."</p>
         <div class="review-who"><div class="review-avatar">S</div><div><span>Saanvi J.</span><small>Delhi</small></div></div>
-        <span class="verified-badge">✓ Verified buyer</span>
+        <span class="verified-badge">âœ“ Verified buyer</span>
       </div>
     </div>
   </section>
@@ -760,7 +227,7 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
       </div>
       <div class="filter-block">
         <h5>Price</h5>
-        <div class="price-range"><span>₹99</span><input type="range" min="99" max="5000"><span>₹5000</span></div>
+        <div class="price-range"><span>â‚¹99</span><input type="range" min="99" max="5000"><span>â‚¹5000</span></div>
       </div>
       <div class="filter-block">
         <h5>Material</h5>
@@ -771,13 +238,13 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
       </div>
       <div class="filter-block">
         <h5>Rating</h5>
-        <label class="filter-row"><input type="checkbox"> 4★ &amp; above</label>
-        <label class="filter-row"><input type="checkbox"> 3★ &amp; above</label>
+        <label class="filter-row"><input type="checkbox"> 4â˜… &amp; above</label>
+        <label class="filter-row"><input type="checkbox"> 3â˜… &amp; above</label>
       </div>
     </aside>
     <div>
       <div class="shop-toolbar">
-        <input class="search-input" placeholder="Search sandalwood, rudraksha, kalash…" style="min-width:260px;">
+        <input class="search-input" placeholder="Search sandalwood, rudraksha, kalashâ€¦" style="min-width:260px;">
         <select><option>Sort: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest</option><option>Best rated</option></select>
       </div>
       <div class="prod-grid" id="shopGrid"></div>
@@ -785,7 +252,7 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
         <button class="page-btn active">1</button>
         <button class="page-btn">2</button>
         <button class="page-btn">3</button>
-        <button class="page-btn">→</button>
+        <button class="page-btn">â†’</button>
       </div>
     </div>
   </div>
@@ -813,16 +280,16 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
       <span class="prod-cat" id="pdCat">Malas &amp; Rudraksha</span>
       <h1 id="pdTitle">Original 5-Mukhi Rudraksha Mala, 108 Beads</h1>
       <div class="pd-rating-row">
-        <div class="stars">★★★★★</div>
-        <span>4.9 · 412 reviews</span>
-        <span class="verified-badge">✓ Lab-certified</span>
+        <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
+        <span>4.9 Â· 412 reviews</span>
+        <span class="verified-badge">âœ“ Lab-certified</span>
       </div>
       <div class="pd-price-block">
-        <span class="price" id="pdPrice">₹1,899</span>
-        <span class="strike">₹2,499</span>
+        <span class="price" id="pdPrice">â‚¹1,899</span>
+        <span class="strike">â‚¹2,499</span>
         <span class="off">24% off</span>
       </div>
-      <p class="pd-tax">Inclusive of all taxes · Free shipping above ₹999</p>
+      <p class="pd-tax">Inclusive of all taxes Â· Free shipping above â‚¹999</p>
       <p class="pd-desc" id="pdDesc">Strung by hand in Haridwar using authentic Nepal-origin 5-mukhi beads, each individually X-ray verified. Worn for calm and focus, or used as a japa mala during meditation.</p>
 
       <div class="variant-block">
@@ -844,7 +311,7 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
 
       <div class="qty-row">
         <div class="qty-selector">
-          <button onclick="changeQty(-1)">−</button>
+          <button onclick="changeQty(-1)">âˆ’</button>
           <span id="pdQty">1</span>
           <button onclick="changeQty(1)">+</button>
         </div>
@@ -888,18 +355,18 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
   </div>
   <div class="pd-tab-panel" id="tab-reviews" style="display:none;">
     <div class="rating-summary">
-      <div class="rating-big"><div class="num">4.9</div><div class="stars">★★★★★</div><span>412 ratings</span></div>
+      <div class="rating-big"><div class="num">4.9</div><div class="stars">â˜…â˜…â˜…â˜…â˜…</div><span>412 ratings</span></div>
       <div class="rating-bars">
-        <div class="rating-bar-row"><span>5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:88%"></div></div><span>362</span></div>
-        <div class="rating-bar-row"><span>4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:8%"></div></div><span>33</span></div>
-        <div class="rating-bar-row"><span>3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div><span>9</span></div>
-        <div class="rating-bar-row"><span>2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div><span>5</span></div>
-        <div class="rating-bar-row"><span>1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div><span>3</span></div>
+        <div class="rating-bar-row"><span>5â˜…</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:88%"></div></div><span>362</span></div>
+        <div class="rating-bar-row"><span>4â˜…</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:8%"></div></div><span>33</span></div>
+        <div class="rating-bar-row"><span>3â˜…</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%"></div></div><span>9</span></div>
+        <div class="rating-bar-row"><span>2â˜…</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div><span>5</span></div>
+        <div class="rating-bar-row"><span>1â˜…</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%"></div></div><span>3</span></div>
       </div>
     </div>
     <div class="review-grid">
-      <div class="review-card"><div class="review-stars">★★★★★</div><p>"Beads feel authentic, and the certificate put my mind at ease. Wearing it daily now."</p><div class="review-who"><div class="review-avatar">P</div><div><span>Priya S.</span><small>2 weeks ago</small></div></div><span class="verified-badge">✓ Verified buyer</span></div>
-      <div class="review-card"><div class="review-stars">★★★★★</div><p>"Bought for my father, he says the weight and finish feel exactly like the one from his old family priest."</p><div class="review-who"><div class="review-avatar">K</div><div><span>Karan T.</span><small>1 month ago</small></div></div><span class="verified-badge">✓ Verified buyer</span></div>
+      <div class="review-card"><div class="review-stars">â˜…â˜…â˜…â˜…â˜…</div><p>"Beads feel authentic, and the certificate put my mind at ease. Wearing it daily now."</p><div class="review-who"><div class="review-avatar">P</div><div><span>Priya S.</span><small>2 weeks ago</small></div></div><span class="verified-badge">âœ“ Verified buyer</span></div>
+      <div class="review-card"><div class="review-stars">â˜…â˜…â˜…â˜…â˜…</div><p>"Bought for my father, he says the weight and finish feel exactly like the one from his old family priest."</p><div class="review-who"><div class="review-avatar">K</div><div><span>Karan T.</span><small>1 month ago</small></div></div><span class="verified-badge">âœ“ Verified buyer</span></div>
     </div>
   </div>
   <div class="pd-tab-panel" id="tab-faq" style="display:none;">
@@ -924,11 +391,11 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
     <div id="cartItemsList"></div>
     <div class="summary-card">
       <h4>Order summary</h4>
-      <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₹3,798</span></div>
+      <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">â‚¹3,798</span></div>
       <div class="summary-row"><span>Shipping</span><span>Free</span></div>
       <div class="promo-row"><input placeholder="Promo code"><button class="btn btn-outline btn-sm">Apply</button></div>
-      <div class="summary-row total"><span>Total</span><span id="cartTotal">₹3,798</span></div>
-      <button class="btn btn-primary btn-block" style="margin-top:18px;" onclick="showToast('Proceeding to checkout…')">Proceed to checkout</button>
+      <div class="summary-row total"><span>Total</span><span id="cartTotal">â‚¹3,798</span></div>
+      <button class="btn btn-primary btn-block" style="margin-top:18px;" onclick="showToast('Proceeding to checkoutâ€¦')">Proceed to checkout</button>
       <button class="btn btn-ghost btn-block" onclick="showPage('shop')">Continue shopping</button>
     </div>
   </div>
@@ -947,7 +414,7 @@ footer{background:var(--ink); color:#D9CFC2; padding:64px 32px 28px;}
     <div><h5>Stay in touch</h5><p style="margin-bottom:14px;">One email a month, at the new moon.</p><div class="promo-row"><input placeholder="Email address" style="border-color:rgba(255,255,255,0.15); background:rgba(255,255,255,0.06); color:#fff;"><button class="btn btn-secondary btn-sm">Join</button></div></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Antara. All rights reserved.</span>
+    <span>Â© 2026 Antara. All rights reserved.</span>
     <span>Made with care, in India.</span>
   </div>
 </footer>
@@ -963,7 +430,7 @@ const products = [
   {id:4, name:"Brass Temple Bell with Ganesha Motif", cat:"Brass & Copper", icon:"ic-bell", price:899, mrp:1199, rating:4.7, badge:"Bestseller"},
   {id:5, name:"Cow Ghee Diya Set (pack of 12)", cat:"Puja Essentials", icon:"ic-diya", price:279, mrp:349, rating:4.8, badge:"Sale"},
   {id:6, name:"Rose Quartz Meditation Mala", cat:"Malas & Rudraksha", icon:"ic-mala", price:1099, mrp:1499, rating:4.6, badge:"Sale"},
-  {id:7, name:"Handrolled Dhoop Cones — Loban & Guggal", cat:"Incense & Dhoop", icon:"ic-incense", price:229, mrp:299, rating:4.7, badge:"Sale"},
+  {id:7, name:"Handrolled Dhoop Cones â€” Loban & Guggal", cat:"Incense & Dhoop", icon:"ic-incense", price:229, mrp:299, rating:4.7, badge:"Sale"},
   {id:8, name:"White Marble Ganesha Idol, 6 inch", cat:"Idols & Murtis", icon:"ic-idol", price:2199, mrp:2799, rating:4.9, badge:null},
   {id:9, name:"Panchmukhi Rudraksha Pendant", cat:"Malas & Rudraksha", icon:"ic-mala", price:1599, mrp:1999, rating:4.8, badge:null},
   {id:10, name:"Handcrafted Copper Kalash with Coconut Base", cat:"Brass & Copper", icon:"ic-kalash", price:1799, mrp:2299, rating:4.7, badge:null},
@@ -985,9 +452,9 @@ function productCard(p, i){
     <div class="prod-info">
       <span class="prod-cat">${p.cat}</span>
       <h4>${p.name}</h4>
-      <div class="prod-rating"><svg><use href="#ic-star"/></svg>${p.rating} · ${(p.id*37+120)} sold</div>
+      <div class="prod-rating"><svg><use href="#ic-star"/></svg>${p.rating} Â· ${(p.id*37+120)} sold</div>
       <div class="prod-price-row">
-        <span class="prod-price">₹${p.price}<span class="strike">₹${p.mrp}</span></span>
+        <span class="prod-price">â‚¹${p.price}<span class="strike">â‚¹${p.mrp}</span></span>
         <button class="add-icon-btn" onclick="event.stopPropagation(); addToCart('${p.name.replace(/'/g,"")}')" aria-label="Add to cart"><svg><use href="#ic-plus"/></svg></button>
       </div>
     </div>
@@ -1023,7 +490,7 @@ function openProduct(id){
   document.getElementById('pdTitle').textContent = p.name;
   document.getElementById('pdCat').textContent = p.cat;
   document.getElementById('pdBreadcrumbName').textContent = p.name;
-  document.getElementById('pdPrice').textContent = '₹'+p.price;
+  document.getElementById('pdPrice').textContent = 'â‚¹'+p.price;
   document.getElementById('pdMainIcon').innerHTML = `<use href="#${p.icon}"/>`;
   showPage('product');
 }
@@ -1047,13 +514,13 @@ function showTab(name){
 /* ---------------- Cart ---------------- */
 let cartCount = 2;
 let cartItems = [
-  {name:"Original 5-Mukhi Rudraksha Mala, 108 Beads", variant:"6mm · Maroon thread", price:1899, qty:1, icon:"ic-mala"},
+  {name:"Original 5-Mukhi Rudraksha Mala, 108 Beads", variant:"6mm Â· Maroon thread", price:1899, qty:1, icon:"ic-mala"},
   {name:"Pure Mysore Sandalwood Incense (30 sticks)", variant:"Pack of 1", price:349, qty:1, icon:"ic-incense"},
 ];
 function addToCart(name){
   cartCount++;
   document.getElementById('cartCount').textContent = cartCount;
-  showToast((name ? name.slice(0,28)+'… ' : '') + 'added to cart');
+  showToast((name ? name.slice(0,28)+'â€¦ ' : '') + 'added to cart');
 }
 function renderCart(){
   const wrap = document.getElementById('cartItemsList');
@@ -1072,18 +539,18 @@ function renderCart(){
           <h4>${it.name}</h4>
           <span>${it.variant}</span>
           <div class="qty-selector" style="margin-top:10px; width:fit-content;">
-            <button onclick="cartQty(${idx},-1)">−</button><span>${it.qty}</span><button onclick="cartQty(${idx},1)">+</button>
+            <button onclick="cartQty(${idx},-1)">âˆ’</button><span>${it.qty}</span><button onclick="cartQty(${idx},1)">+</button>
           </div>
         </div>
         <div class="cart-item-right">
-          <strong>₹${it.price*it.qty}</strong>
+          <strong>â‚¹${it.price*it.qty}</strong>
           <a href="#" class="remove-link" onclick="removeCart(${idx});return false;">Remove</a>
         </div>
       </div>`).join('');
   }
   const subtotal = cartItems.reduce((s,it)=>s+it.price*it.qty,0);
-  document.getElementById('cartSubtotal').textContent = '₹'+subtotal;
-  document.getElementById('cartTotal').textContent = '₹'+subtotal;
+  document.getElementById('cartSubtotal').textContent = 'â‚¹'+subtotal;
+  document.getElementById('cartTotal').textContent = 'â‚¹'+subtotal;
 }
 function cartQty(idx,d){ cartItems[idx].qty = Math.max(1, cartItems[idx].qty+d); renderCart(); }
 function removeCart(idx){ cartItems.splice(idx,1); cartCount = Math.max(0,cartCount-1); document.getElementById('cartCount').textContent = cartCount; renderCart(); }
@@ -1112,3 +579,4 @@ document.querySelectorAll('.variant-options').forEach(group=>{
 
 </body>
 </html>
+
