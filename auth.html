@@ -265,18 +265,31 @@
 
     signupForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      window.location.href = 'admin-dashboard.html';
+      // notify parent to navigate top-level (if embedded)
+      if(window.parent && window.parent !== window){
+        try{ window.parent.postMessage(JSON.stringify({ navigate: 'admin-dashboard.html' }), '*'); }catch(e){}
+      } else {
+        window.location.href = 'admin-dashboard.html';
+      }
     });
 
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      window.location.href = 'admin-dashboard.html';
+      if(window.parent && window.parent !== window){
+        try{ window.parent.postMessage(JSON.stringify({ navigate: 'admin-dashboard.html' }), '*'); }catch(e){}
+      } else {
+        window.location.href = 'admin-dashboard.html';
+      }
     });
 
     adminLoginBtn.addEventListener('click', () => {
       document.getElementById('loginEmail').value = 'admin@antara.com';
       document.getElementById('loginPassword').value = 'admin123';
-      window.location.href = 'admin-dashboard.html';
+      if(window.parent && window.parent !== window){
+        try{ window.parent.postMessage(JSON.stringify({ navigate: 'admin-dashboard.html' }), '*'); }catch(e){}
+      } else {
+        window.location.href = 'admin-dashboard.html';
+      }
     });
   </script>
 </body>
