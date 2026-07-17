@@ -2,8 +2,8 @@
   --bg: #F8FAFC;
   --surface: #FFFFFF;
   --surface-soft: #F8FAFC;
-  --primary: #2563EB;
-  --primary-soft: #DBEAFE;
+  --primary: #16A34A;
+  --primary-soft: #BBF7D0;
   --text: #0F172A;
   --muted: #64748B;
   --border: #E2E8F0;
@@ -207,7 +207,7 @@ button { cursor: pointer; border: none; background: none; }
 .btn-primary {
   background: var(--primary);
   color: white;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.18);
 }
 .btn-primary:hover { transform: translateY(-1px); }
 .btn-secondary {
