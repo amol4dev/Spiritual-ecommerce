@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Antara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef4ff 100%);
+      color: #0f172a;
+    }
+    .contact-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+    }
+    .contact-card {
+      width: 100%;
+      max-width: 1080px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+    }
+    .contact-hero {
+      background: linear-gradient(135deg, #2563eb, #60a5fa);
+      color: white;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .contact-hero p {
+      margin: 0;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.75;
+      max-width: 480px;
+    }
+    .contact-hero .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .contact-hero .stat {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 18px 20px;
+      border-radius: 18px;
+    }
+    .contact-hero .stat h3 {
+      margin: 0 0 4px;
+      font-size: 20px;
+    }
+    .contact-hero .stat p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .contact-panel {
+      padding: 42px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+    }
+    .contact-panel h2 {
+      margin: 0;
+      font-size: 30px;
+    }
+    .contact-panel p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.75;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: 14px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      background: #fff;
+      outline: none;
+      font-size: 14px;
+      color: #0f172a;
+      resize: vertical;
+    }
+    .form-group textarea { min-height: 140px; }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease;
+    }
+    .btn-contact:hover { transform: translateY(-1px); }
+    .info-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .info-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+    .info-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+    .info-card p {
+      margin: 0;
+      color: #475569;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .contact-list a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    @media (max-width: 920px) {
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .contact-hero, .contact-panel { padding: 32px 24px; }
+      .contact-hero .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="contact-page">
+    <section class="contact-card">
+      <div class="contact-hero">
+        <div>
+          <p class="eyebrow">Need help?</p>
+          <h1>Get in touch with our team.</h1>
+          <p>Whether you want to ask about orders, suggest a product, or need help with our experience, we’re here to help. Send us a message and we’ll respond within one business day.</p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <h3>Fast response</h3>
+            <p>Most questions are answered within 24 hours on weekdays.</p>
+          </div>
+          <div class="stat">
+            <h3>Trusted support</h3>
+            <p>Our team is ready to help with order, product, and website inquiries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-panel">
+        <div>
+          <p class="eyebrow">Contact form</p>
+          <h2>Send us a message</h2>
+          <p>Fill in a few details and we’ll take it from there. This form is for general questions and support requests.</p>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input id="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input id="subject" type="text" placeholder="How can we help?" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your request" required></textarea>
+          </div>
+          <button class="btn-contact" type="submit">Send message</button>
+        </form>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Customer support</h3>
+            <p>support@antara.example</p>
+            <p>Mon–Fri · 9:00 AM – 6:00 PM</p>
+          </div>
+          <div class="info-card">
+            <h3>Headquarters</h3>
+            <p>123 Triveni Lane, Bangalore, India</p>
+          </div>
+          <div class="info-card">
+            <h3>Quick links</h3>
+            <div class="contact-list">
+              <a href="index.html">Home</a>
+              <a href="auth.html">Sign in</a>
+              <a href="admin-dashboard.html">Admin portal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
